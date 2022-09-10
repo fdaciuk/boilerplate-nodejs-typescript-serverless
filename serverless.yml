@@ -45,3 +45,4 @@ custom:
 plugins:
   - serverless-localstack
   - serverless-bundle
+  - serverless-offline
