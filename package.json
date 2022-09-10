@@ -1,5 +1,6 @@
 {
   "name": "my-service",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "docker:up": "docker-compose up -d",
@@ -7,7 +8,13 @@
     "docker:down": "docker-compose down",
     "docker:destroy": "docker-compose down --volumes --remove-orphans",
     "deploy:local": "serverless deploy --stage local",
-    "deploy:dev": "serverless deploy --stage dev"
+    "deploy:dev": "serverless deploy --stage dev",
+    "lint": "eslint . --ext js,ts",
+    "lint:fix": "eslint --fix . --ext js,ts",
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
+    "prepare": "husky install",
+    "ci": "yarn lint && yarn type-check && yarn test",
+    "update-deps": "sucrase-node ./src/config/update-deps.ts"
   },
   "engines": {
     "node": ">=16 <17"
@@ -17,9 +24,19 @@
     "fastify": "4.5.3"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "5.36.2",
+    "@typescript-eslint/parser": "5.36.2",
+    "eslint": "8.23.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jest": "27.0.4",
+    "eslint-plugin-n": "15.2.5",
+    "eslint-plugin-promise": "6.0.1",
+    "husky": "8.0.1",
     "serverless": "3.22.0",
     "serverless-bundle": "5.5.0",
     "serverless-localstack": "1.0.0",
+    "sucrase": "3.25.0",
     "typescript": "4.8.3"
   }
 }
