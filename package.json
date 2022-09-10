@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run start:server",
+    "test": "echo 1",
     "start:server": "serverless offline start",
     "docker:up": "docker-compose up -d",
     "docker:up:logs": "yarn docker:up && docker-compose logs -f",
@@ -11,11 +12,13 @@
     "docker:destroy": "docker-compose down --volumes --remove-orphans",
     "deploy:local": "serverless deploy --stage local",
     "deploy:dev": "serverless deploy --stage dev",
+    "deploy": "serverless deploy",
     "lint": "eslint . --ext js,ts",
     "lint:fix": "eslint --fix . --ext js,ts",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
     "prepare": "husky install",
     "ci": "yarn lint && yarn type-check && yarn test",
+    "check-lint-type": "yarn lint:fix && yarn type-check",
     "update-deps": "sucrase-node ./src/config/update-deps.ts"
   },
   "engines": {
