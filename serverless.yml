@@ -1,0 +1,47 @@
+service: my-service
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: us-east-1
+  memorySize: 256
+  httpApi:
+    payload: '2.0'
+    shouldStartNameWithService: true
+    metrics: true
+    cors: true
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - lambda:*
+          Resource: '*'
+
+  environment:
+    ENVIRONMENT: ${opt:stage, 'local'}
+
+package:
+  individually: true
+
+functions:
+  name_of_the_function:
+    handler: src/functions/index.handler
+    events:
+      - httpApi: '*'
+
+custom:
+  # localstack
+  localstack:
+    stages:
+      - local
+    host: http://0.0.0.0
+
+  # serverless-bundle
+  bundle:
+    sourcemaps: true
+
+plugins:
+  - serverless-localstack
+  - serverless-bundle
