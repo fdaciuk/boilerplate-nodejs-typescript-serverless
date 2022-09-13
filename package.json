@@ -40,6 +40,8 @@
     "husky": "8.0.1",
     "serverless": "3.22.0",
     "serverless-bundle": "5.5.0",
+    "serverless-domain-manager": "6.1.0",
+    "serverless-dotenv-plugin": "4.0.2",
     "serverless-localstack": "1.0.0",
     "serverless-offline": "10.0.1",
     "sucrase": "3.25.0",

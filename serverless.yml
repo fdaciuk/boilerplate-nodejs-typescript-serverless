@@ -42,7 +42,22 @@ custom:
   bundle:
     sourcemaps: true
 
+  # serverless-domain-manager
+  # customDomain:
+  #   domainName: serverless.foo.com
+  #   stage: ${opt:stage, 'dev'}
+  #   basePath: ''
+  #   certificateName: '*.foo.com'
+  #   createRoute53Record: true
+  #   createRoute53IPv6Record: true
+  #   endpointType: 'regional'
+  #   securityPolicy: tls_1_2
+  #   apiType: http
+  #   autoDomain: false
+
 plugins:
   - serverless-localstack
   - serverless-bundle
   - serverless-offline
+  # - serverless-domain-manager
+  - serverless-dotenv-plugin
