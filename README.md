@@ -1,6 +1,6 @@
 # Boilerplate Node.js + TypeScript for Serverless
 
-> WIP - Boilerplate Node.js + TypeScript + Prisma + Aurora + Serverless
+> WIP - Boilerplate Node.js + TypeScript + Prisma + Serverless
 
 ## Setup
 
