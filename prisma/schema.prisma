@@ -3,17 +3,35 @@
 
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
-  referentialIntegrity = "prisma"
+}
+
+model Post {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  slug      String     @unique
+  title     String
+  body      String
+  comments  Comment[]
+  author    User       @relation(fields: [authorId], references: [id])
+  authorId  String     @db.ObjectId
+}
+
+// Comments contain a comment string and connect back to the post.
+// postId must have @db.ObjectId to match up with Post's id type
+model Comment {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  post     Post    @relation(fields: [postId], references: [id])
+  postId   String  @db.ObjectId
+  comment  String
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  email  String   @unique
+  name   String?
+  posts  Post[]
 }
