@@ -33,9 +33,40 @@ DB_DATABASE=db
 DATABASE_URL="mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_DATABASE}?retryWrites=true&w=majority"
 ```
 
+To use with MongoDB local (docker-compose), use this env config:
+
+```zsh
+DB_USER=mongodbuser
+DB_PASSWORD=mongodbpass
+DB_HOST=0.0.0.0
+DB_PORT=27017
+DB_DATABASE=db
+DATABASE_URL="mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATABASE}?authSource=admin&retryWrites=true&w=majority"
+```
+
 ### Local server
 
-WIP
+Get the docker up with the command:
+
+```zsh
+DEBUG=1 yarn docker:up:logs
+```
+
+With this command, you can see if something is wrong by looking at the logs.
+You can use `Ctrl + C` any time to came back to your terminal prompt without
+get the process down.
+
+To get the docker down, you will have to use the command:
+
+```zsh
+yarn docker:down
+```
+
+After the docker is up and running, just get your server up with the following command:
+
+```zsh
+yarn dev
+```
 
 ### Deploy
 
