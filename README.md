@@ -46,6 +46,12 @@ DATABASE_URL="mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DAT
 
 ### Local server
 
+If you are using mongodb, you need to create TypeScript types to use with Prisma. Just run the command:
+
+```zsh
+yarn prisma generate
+```
+
 Get the docker up with the command:
 
 ```zsh
