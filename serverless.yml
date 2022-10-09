@@ -23,7 +23,7 @@ provider:
 
   environment:
     ENVIRONMENT: ${opt:stage, 'local'}
-    # DATABASE_URL: ${ssm:my-service-database-url-${opt:stage, 'dev'}, env:DATABASE_URL}
+    DATABASE_URL: ${ssm:my-service-database-url-${opt:stage, 'dev'}, env:DATABASE_URL}
 
 package:
   individually: true
